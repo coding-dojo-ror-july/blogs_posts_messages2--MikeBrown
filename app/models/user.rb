@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
     #all the blogs a user has posted on
     has_many :blogs_posts, through: :posts, source: :blog
 
+    has_many :messages, through: :posts
+
     validates :first_name, :last_name, :email_address, presence:true
     validates :email_address, uniqueness: { case_sensitive: false}, format: { with: EMAIL_REGEX}
 end
